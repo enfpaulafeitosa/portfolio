@@ -1,0 +1,7 @@
+<svg width="240" height="220" viewBox="0 0 240 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aplicação de bandagem pré e pós-parto">
+  <path d="M101 27C91 49 93 69 109 88C91 107 85 137 96 165C106 191 132 202 165 194" stroke="#B8860B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M166 27C156 56 158 80 175 102C189 120 197 150 187 176" stroke="#B8860B" stroke-width="8" stroke-linecap="round"/>
+  <rect x="111" y="99" width="47" height="25" rx="10" transform="rotate(45 111 99)" stroke="#B8860B" stroke-width="7"/>
+  <rect x="155" y="150" width="47" height="25" rx="10" transform="rotate(45 155 150)" stroke="#B8860B" stroke-width="7"/>
+  <path d="M113 112L148 147M148 112L113 147M157 163L192 198M192 163L157 198" stroke="#B8860B" stroke-width="5" stroke-linecap="round"/>
+</svg>

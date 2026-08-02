@@ -1,0 +1,9 @@
+<svg width="240" height="220" viewBox="0 0 240 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Consultoria de amamentação">
+  <path d="M73 188C65 157 69 120 88 95C103 75 114 58 108 39" stroke="#B8860B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M108 39C131 39 147 52 150 72C154 99 136 116 116 122" stroke="#B8860B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M92 116C115 104 139 119 143 144" stroke="#B8860B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M95 158C115 136 149 126 177 147C167 182 126 192 95 158Z" stroke="#B8860B" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M156 148C169 145 183 151 190 163" stroke="#B8860B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M127 158C132 169 145 175 157 169" stroke="#B8860B" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="139" cy="160" r="3.5" fill="#B8860B"/>
+</svg>

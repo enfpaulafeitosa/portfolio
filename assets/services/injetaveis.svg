@@ -1,0 +1,10 @@
+<svg width="240" height="220" viewBox="0 0 240 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Administração de injetáveis">
+  <path d="M87 28V73" stroke="#B8860B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M72 73H102" stroke="#B8860B" stroke-width="8" stroke-linecap="round"/>
+  <rect x="65" y="74" width="45" height="91" rx="10" stroke="#B8860B" stroke-width="8"/>
+  <path d="M65 101H109M65 123H109M79 88H94M79 110H94M79 132H94" stroke="#B8860B" stroke-width="5" stroke-linecap="round"/>
+  <path d="M55 166H120M77 166V190M99 166V190M70 190H106" stroke="#B8860B" stroke-width="8" stroke-linecap="round"/>
+  <rect x="150" y="82" width="51" height="105" rx="10" stroke="#B8860B" stroke-width="8"/>
+  <path d="M145 82H206M156 54H195V82H156V54Z" stroke="#B8860B" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M176 123V158M158 140H194" stroke="#B8860B" stroke-width="8" stroke-linecap="round"/>
+</svg>

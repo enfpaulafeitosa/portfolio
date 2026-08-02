@@ -61,6 +61,10 @@
         />
       </a>
 
+      <p class="header-register">
+        COREN-CE 000000-ENF
+      </p>
+
       <button
         class="menu-toggle"
         type="button"
@@ -142,13 +146,18 @@
               consultoria em amamentação, aplicação de bandagens, curativos,
               verificação de sinais vitais e administração de injetáveis.
             </p>
-            <a
-              class="button button-primary download-button"
-              href="assets/curriculo-paula-feitosa.pdf"
-              download
-            >
-              Baixar currículo
-            </a>
+            <div class="intro-actions">
+              <p class="professional-register">
+                COREN-CE 000000-ENF
+              </p>
+              <a
+                class="button button-primary download-button"
+                href="assets/curriculo-paula-feitosa.pdf"
+                download
+              >
+                Baixar currículo
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -210,71 +219,191 @@
             <h2>Atendimentos de enfermagem com técnica, acolhimento e segurança.</h2>
           </div>
 
-          <div class="service-grid">
-            <article class="service-card">
-              <span class="service-icon">01</span>
-              <h3>Verificação de sinais vitais</h3>
-              <p>
-                Acompanhamento de parâmetros essenciais para avaliação e
-                orientação do cuidado.
-              </p>
-            </article>
-            <article class="service-card">
-              <span class="service-icon">02</span>
-              <h3>Troca de curativos simples e complexos</h3>
-              <p>
-                Cuidado técnico com curativos conforme necessidade, indicação e
-                avaliação profissional.
-              </p>
-            </article>
-            <article class="service-card">
-              <span class="service-icon">03</span>
-              <h3>Troca de curativos pós-cirúrgicos</h3>
-              <p>
-                Atenção ao processo de recuperação, higiene, proteção da pele e
-                sinais de alerta.
-              </p>
-            </article>
-            <article class="service-card">
-              <span class="service-icon">04</span>
-              <h3>Administração de injetáveis</h3>
-              <p>
-                Aplicação com técnica, responsabilidade e orientação adequada
-                para cada atendimento.
-              </p>
-            </article>
-            <article class="service-card">
-              <span class="service-icon">05</span>
-              <h3>Aplicação de bandagem na amamentação</h3>
-              <p>
-                Suporte complementar para conforto, manejo e cuidado durante o
-                processo de amamentação.
-              </p>
-            </article>
-            <article class="service-card">
-              <span class="service-icon">06</span>
-              <h3>Cuidados materno-infantis</h3>
-              <p>
-                Orientação e acompanhamento para mães, bebês e famílias em
-                momentos importantes da rotina de cuidado.
-              </p>
-            </article>
-            <article class="service-card">
-              <span class="service-icon">07</span>
-              <h3>Consultoria de amamentação</h3>
-              <p>
-                Apoio para pega, posicionamento, dúvidas frequentes e segurança
-                emocional no aleitamento materno.
-              </p>
-            </article>
-            <article class="service-card">
-              <span class="service-icon">08</span>
-              <h3>Aplicação de bandagem pré e pós-parto</h3>
-              <p>
-                Atendimento voltado ao suporte corporal e ao bem-estar no
-                período gestacional e pós-parto.
-              </p>
-            </article>
+          <div
+            class="services-carousel"
+            role="region"
+            aria-roledescription="carrossel"
+            aria-label="Serviços prestados"
+          >
+            <div class="carousel-controls" aria-label="Controles do carrossel">
+              <button
+                class="carousel-button"
+                type="button"
+                data-carousel-prev
+                aria-label="Ver serviços anteriores"
+              >
+                <svg
+                  class="lucide-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m15 18-6-6 6-6"></path>
+                </svg>
+              </button>
+              <button
+                class="carousel-button"
+                type="button"
+                data-carousel-next
+                aria-label="Ver próximos serviços"
+              >
+                <svg
+                  class="lucide-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </button>
+            </div>
+
+            <div
+              class="service-grid"
+              data-services-track
+              tabindex="0"
+              role="list"
+              aria-label="Lista de serviços"
+            >
+              <article class="service-card" role="listitem" aria-label="Verificação de sinais vitais">
+                <img
+                  class="service-image"
+                  src="assets/services/sinais-vitais-foto.jpg"
+                  alt="Ícone de verificação de sinais vitais"
+                />
+                <span class="service-icon">01</span>
+                <h3>Verificação de sinais vitais</h3>
+                <p>
+                  Acompanhamento de parâmetros essenciais para avaliação e
+                  orientação do cuidado.
+                </p>
+              </article>
+              <article class="service-card" role="listitem" aria-label="Troca de curativos simples e complexos">
+                <img
+                  class="service-image"
+                  src="assets/services/curativos-foto.jpg"
+                  alt="Ícone de troca de curativos"
+                />
+                <span class="service-icon">02</span>
+                <h3>Troca de curativos simples e complexos</h3>
+                <p>
+                  Cuidado técnico com curativos conforme necessidade, indicação
+                  e avaliação profissional.
+                </p>
+              </article>
+              <article class="service-card" role="listitem" aria-label="Troca de curativos pós-cirúrgicos">
+                <img
+                  class="service-image"
+                  src="assets/services/curativos-pos-cirurgicos-foto.jpg"
+                  alt="Ícone de troca de curativos pós-cirúrgicos"
+                />
+                <span class="service-icon">03</span>
+                <h3>Troca de curativos pós-cirúrgicos</h3>
+                <p>
+                  Atenção ao processo de recuperação, higiene, proteção da pele
+                  e sinais de alerta.
+                </p>
+              </article>
+              <article class="service-card" role="listitem" aria-label="Administração de injetáveis">
+                <img
+                  class="service-image"
+                  src="assets/services/injetaveis-foto.jpg"
+                  alt="Ícone de administração de injetáveis"
+                />
+                <span class="service-icon">04</span>
+                <h3>Administração de injetáveis</h3>
+                <p>
+                  Aplicação com técnica, responsabilidade e orientação adequada
+                  para cada atendimento.
+                </p>
+              </article>
+              <article class="service-card" role="listitem" aria-label="Aplicação de bandagem na amamentação">
+                <img
+                  class="service-image"
+                  src="assets/services/bandagem-amamentacao-foto.jpg"
+                  alt="Ícone de aplicação de bandagem na amamentação"
+                />
+                <span class="service-icon">05</span>
+                <h3>Aplicação de bandagem na amamentação</h3>
+                <p>
+                  Suporte complementar para conforto, manejo e cuidado durante o
+                  processo de amamentação.
+                </p>
+              </article>
+              <article class="service-card" role="listitem" aria-label="Cuidados materno-infantis">
+                <img
+                  class="service-image"
+                  src="assets/services/cuidados-materno-infantis-foto.jpg"
+                  alt="Ícone de cuidados materno-infantis"
+                />
+                <span class="service-icon">06</span>
+                <h3>Cuidados materno-infantis</h3>
+                <p>
+                  Orientação e acompanhamento para mães, bebês e famílias em
+                  momentos importantes da rotina de cuidado.
+                </p>
+              </article>
+              <article class="service-card" role="listitem" aria-label="Consultoria de amamentação">
+                <img
+                  class="service-image"
+                  src="assets/services/consultoria-amamentacao-foto.jpg"
+                  alt="Ícone de consultoria de amamentação"
+                />
+                <span class="service-icon">07</span>
+                <h3>Consultoria de amamentação</h3>
+                <p>
+                  Apoio para pega, posicionamento, dúvidas frequentes e segurança
+                  emocional no aleitamento materno.
+                </p>
+              </article>
+              <article class="service-card" role="listitem" aria-label="Aplicação de bandagem pré e pós-parto">
+                <img
+                  class="service-image"
+                  src="assets/services/bandagem-pre-pos-parto-foto.jpg"
+                  alt="Ícone de aplicação de bandagem pré e pós-parto"
+                />
+                <span class="service-icon">08</span>
+                <h3>Aplicação de bandagem pré e pós-parto</h3>
+                <p>
+                  Atendimento voltado ao suporte corporal e ao bem-estar no
+                  período gestacional e pós-parto.
+                </p>
+              </article>
+              <article class="service-card service-card-contact" role="listitem" aria-label="Contato para outros serviços">
+                <h3>Não achou seu serviço?</h3>
+                <p>
+                  Entre em contato para tirar dúvidas e verificar como Paula
+                  pode orientar o melhor formato de cuidado.
+                </p>
+                <a
+                  class="button button-primary service-contact-button"
+                  href="https://wa.me/5585986994455?text=Ol%C3%A1%2C%20Paula!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20um%20servi%C3%A7o."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Entrar em contato
+                </a>
+              </article>
+            </div>
+            <div
+              class="carousel-dots"
+              data-carousel-dots
+              aria-label="Selecionar serviço"
+            ></div>
           </div>
         </div>
       </section>
@@ -282,25 +411,52 @@
       <section class="section-shell mission-section" id="missao">
         <div class="mission-copy">
           <p class="eyebrow">Missão</p>
-          <h2>Unir rigor científico, serenidade e toque humano.</h2>
-          <p>
-            Oferecer um cuidado de enfermagem ético, humanizado e baseado em
-            boas práticas, acolhendo a história, as necessidades e a segurança
-            de cada mãe, bebê e família atendida.
-          </p>
+          <h3>Unir rigor científico, serenidade e toque humano.</h3>
+          <div class="principle-item">
+            <span class="principle-number">1</span>
+            <p>
+              <strong>Cuidado ético</strong>
+              <span>Atuação de enfermagem baseada em responsabilidade e boas práticas.</span>
+            </p>
+          </div>
+          <div class="principle-item">
+            <span class="principle-number">2</span>
+            <p>
+              <strong>Acolhimento</strong>
+              <span>Escuta da história e das necessidades de cada mãe, bebê e família.</span>
+            </p>
+          </div>
+          <div class="principle-item">
+            <span class="principle-number">3</span>
+            <p>
+              <strong>Segurança</strong>
+              <span>Orientação clara para reduzir dúvidas, ansiedade e riscos no cuidado.</span>
+            </p>
+          </div>
         </div>
         <div class="principles">
-          <div>
-            <strong>Escuta</strong>
-            <span>Atendimento atento ao contexto de cada paciente.</span>
+          <p class="eyebrow">Princípios</p>
+          <h3>Valores que orientam<br />o cuidado<br />profissional.</h3>
+          <div class="principle-item">
+            <span class="principle-number">1</span>
+            <p>
+              <strong>Escuta</strong>
+              <span>Atendimento atento ao contexto de cada paciente.</span>
+            </p>
           </div>
-          <div>
-            <strong>Segurança</strong>
-            <span>Orientações responsáveis, organizadas e baseadas em técnica.</span>
+          <div class="principle-item">
+            <span class="principle-number">2</span>
+            <p>
+              <strong>Segurança</strong>
+              <span>Orientações responsáveis, organizadas e baseadas em técnica.</span>
+            </p>
           </div>
-          <div>
-            <strong>Humanização</strong>
-            <span>Presença profissional com respeito, delicadeza e empatia.</span>
+          <div class="principle-item">
+            <span class="principle-number">3</span>
+            <p>
+              <strong>Humanização</strong>
+              <span>Presença profissional com respeito, delicadeza e empatia.</span>
+            </p>
           </div>
         </div>
       </section>
@@ -311,14 +467,48 @@
             <p class="eyebrow">Contato</p>
             <h2>Agende uma conversa com Paula Feitosa.</h2>
             <p>
-              Atendimento pelo WhatsApp e telefone para tirar dúvidas, verificar
-              disponibilidade e combinar o melhor formato de cuidado.
+              Faça contato pelo WhatsApp, telefone ou e-mail para tirar dúvidas,
+              verificar disponibilidade e combinar o melhor formato de cuidado.
             </p>
+            <a
+              class="button button-light contact-whatsapp"
+              href="https://wa.me/5585986994455?text=Ol%C3%A1%2C%20Paula!%20Gostaria%20de%20agendar%20um%20atendimento."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                class="button-icon"
+                src="assets/logo_whatsapp.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              Iniciar conversa
+            </a>
             <div class="contact-links" aria-label="Canais de contato">
               <a class="contact-link contact-phone" href="tel:+5585986994455">
-                Tel. (85) 9.8699-4455
+                <svg
+                  class="lucide-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path>
+                </svg>
+                (85) 9.8699-4455
               </a>
-              <a class="contact-link" href="mailto:enfpaulafeitosa@gmail.com">
+              <button
+                class="contact-link contact-copy"
+                type="button"
+                data-copy-email="enfpaulafeitosa@gmail.com"
+                aria-label="Copiar e-mail enfpaulafeitosa@gmail.com"
+              >
                 <svg
                   class="lucide-icon"
                   xmlns="http://www.w3.org/2000/svg"
@@ -335,32 +525,18 @@
                   <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </svg>
-                enfpaulafeitosa@gmail.com
-              </a>
+                <span class="copy-label">enfpaulafeitosa@gmail.com</span>
+              </button>
             </div>
             <p class="contact-copyright">
               © 2026 Paula Feitosa. Todos os direitos reservados.
             </p>
           </div>
-          <a
-            class="button button-light"
-            href="https://wa.me/5585986994455?text=Ol%C3%A1%2C%20Paula!%20Gostaria%20de%20agendar%20um%20atendimento."
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              class="button-icon"
-              src="assets/logo_whatsapp.svg"
-              alt=""
-              aria-hidden="true"
-            />
-            Chamar no WhatsApp
-          </a>
         </div>
       </section>
     </main>
 
-    <a class="back-to-top-fab" href="#topo" aria-label="Voltar ao topo">
+    <a class="back-to-top-fab" href="#topo" data-scroll-top aria-label="Voltar ao topo">
       ↑
     </a>
 

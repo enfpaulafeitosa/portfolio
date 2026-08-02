@@ -1,0 +1,9 @@
+<svg width="240" height="220" viewBox="0 0 240 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cuidados materno-infantis">
+  <path d="M83 190C77 158 85 125 103 102C118 83 126 62 118 42" stroke="#B8860B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M116 42C139 41 154 54 158 73C163 96 146 114 130 122" stroke="#B8860B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M104 101C85 99 69 87 66 69" stroke="#B8860B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M111 151C127 128 169 131 181 162C169 185 132 193 111 151Z" stroke="#B8860B" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M135 156C141 167 154 173 166 168" stroke="#B8860B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M146 142C146 133 151 126 158 122" stroke="#B8860B" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="145" cy="160" r="3.5" fill="#B8860B"/>
+</svg>
