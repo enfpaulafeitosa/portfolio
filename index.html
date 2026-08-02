@@ -3,24 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Paula Feitosa | Enfermeira</title>
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; form-action 'none'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src 'self' 'sha256-TPiPLExnKQmRkM9PWPfrc8ucsm2Ls4plu33n41Wfelc='; connect-src 'self'; upgrade-insecure-requests"
+    />
+    <title>Paula Feitosa | Enfermeira Neonatal e Atendimento a Domicílio em Fortaleza</title>
     <meta
       name="description"
-      content="Portfólio profissional da Enf. Paula Feitosa. Serviços de enfermagem, curativos, sinais vitais, injetáveis, cuidados materno-infantis e consultoria em amamentação."
+      content="Enf. Paula Feitosa: enfermeira em Fortaleza com atendimento a domicílio, cuidados materno-infantis, enfermagem neonatal, consultoria em amamentação, curativos, sinais vitais e injetáveis."
     />
     <meta
       name="keywords"
-      content="Paula Feitosa, Enf. Paula Feitosa, enfermeira Paula Feitosa, enfermagem, aleitamento materno, amamentação, consultoria em amamentação, curativos, injetáveis, sinais vitais, cuidados materno-infantis, bandagem pós-parto"
+      content="Paula Feitosa, Enf. Paula Feitosa, enfermeira Paula Feitosa, enfermeira neonatal, enfermeira a domicílio, enfermagem domiciliar, atendimento de enfermagem em Fortaleza, enfermeira em Fortaleza, enfermeira no Ceará, cuidados materno-infantis, consultoria em amamentação, aleitamento materno, curativos, injetáveis, sinais vitais, bandagem pós-parto"
     />
     <meta name="author" content="Paula Feitosa" />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Paula Feitosa | Enfermeira" />
+    <meta property="og:title" content="Paula Feitosa | Enfermeira Neonatal e Atendimento a Domicílio" />
     <meta
       property="og:description"
-      content="Serviços de enfermagem, cuidados materno-infantis e consultoria em amamentação com a Enf. Paula Feitosa."
+      content="Atendimento de enfermagem em Fortaleza: cuidados materno-infantis, apoio neonatal, consultoria em amamentação, curativos, sinais vitais e injetáveis."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="https://www.paulafeitosa.com.br/" />
+    <meta property="og:image" content="https://www.paulafeitosa.com.br/assets/foto_paula.jpeg" />
+    <meta name="twitter:title" content="Paula Feitosa | Enfermeira em Fortaleza" />
+    <meta
+      name="twitter:description"
+      content="Enfermeira a domicílio, cuidados materno-infantis, enfermagem neonatal e consultoria em amamentação em Fortaleza."
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://www.paulafeitosa.com.br/" />
     <link rel="icon" href="assets/monograma.svg" type="image/svg+xml" />
@@ -34,20 +48,64 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Paula Feitosa",
-        "jobTitle": "Enfermeira",
-        "description": "Portfólio profissional da Enf. Paula Feitosa, com formação, cursos, serviços prestados e missão no cuidado em enfermagem e apoio ao aleitamento materno.",
-        "knowsAbout": [
-          "Enfermagem",
-          "Cuidados materno-infantis",
-          "Consultoria em amamentação",
-          "Curativos",
-          "Administração de injetáveis",
-          "Aleitamento materno",
-          "Bandagem pré e pós-parto"
-        ],
-        "url": "https://www.paulafeitosa.com.br/"
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://www.paulafeitosa.com.br/#paula-feitosa",
+            "name": "Paula Feitosa",
+            "alternateName": [
+              "Enf. Paula Feitosa",
+              "Enfermeira Paula Feitosa"
+            ],
+            "jobTitle": [
+              "Enfermeira",
+              "Enfermeira neonatal",
+              "Enfermeira a domicílio"
+            ],
+            "description": "Portfólio profissional da Enf. Paula Feitosa, enfermeira em Fortaleza com foco em cuidados materno-infantis, enfermagem neonatal, consultoria em amamentação, curativos, sinais vitais, injetáveis e atendimento de enfermagem a domicílio.",
+            "knowsAbout": [
+              "Enfermagem",
+              "Enfermagem neonatal",
+              "Enfermagem domiciliar",
+              "Atendimento de enfermagem a domicílio",
+              "Cuidados materno-infantis",
+              "Consultoria em amamentação",
+              "Curativos",
+              "Administração de injetáveis",
+              "Aleitamento materno",
+              "Bandagem pré e pós-parto"
+            ],
+            "areaServed": [
+              "Fortaleza",
+              "Ceará"
+            ],
+            "url": "https://www.paulafeitosa.com.br/"
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://www.paulafeitosa.com.br/#servicos-enfermagem",
+            "name": "Serviços de enfermagem Paula Feitosa",
+            "description": "Atendimento de enfermagem em Fortaleza com cuidados materno-infantis, enfermagem neonatal, consultoria em amamentação, curativos, sinais vitais, administração de injetáveis e orientação domiciliar.",
+            "provider": {
+              "@id": "https://www.paulafeitosa.com.br/#paula-feitosa"
+            },
+            "areaServed": {
+              "@type": "AdministrativeArea",
+              "name": "Fortaleza, Ceará"
+            },
+            "serviceType": [
+              "Enfermeira neonatal",
+              "Enfermeira a domicílio",
+              "Enfermagem domiciliar",
+              "Consultoria em amamentação",
+              "Cuidados materno-infantis",
+              "Curativos",
+              "Administração de injetáveis",
+              "Verificação de sinais vitais"
+            ],
+            "url": "https://www.paulafeitosa.com.br/#servicos"
+          }
+        ]
       }
     </script>
   </head>
@@ -82,6 +140,7 @@
         <a href="#servicos">Serviços</a>
         <a href="#missao">Missão</a>
         <a href="#contato">Contato</a>
+        <span class="nav-register">COREN-CE 000000-ENF</span>
       </nav>
     </header>
 
@@ -101,6 +160,7 @@
               href="https://wa.me/5585986994455?text=Ol%C3%A1%2C%20Paula!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
               target="_blank"
               rel="noopener noreferrer"
+              referrerpolicy="strict-origin-when-cross-origin"
             >
               Entrar em contato
             </a>
@@ -142,9 +202,11 @@
           <div class="intro-copy">
             <p>
               Enfermeira formada pela Universidade de Fortaleza (Unifor) em
-              2026.1, com foco de atuação em cuidados materno-infantis,
-              consultoria em amamentação, aplicação de bandagens, curativos,
-              verificação de sinais vitais e administração de injetáveis.
+              2026.1, com foco de atuação em atendimento de enfermagem a
+              domicílio em Fortaleza, cuidados materno-infantis, suporte
+              neonatal, consultoria em amamentação, aplicação de bandagens,
+              curativos, verificação de sinais vitais e administração de
+              injetáveis.
             </p>
             <div class="intro-actions">
               <p class="professional-register">
@@ -394,6 +456,7 @@
                   href="https://wa.me/5585986994455?text=Ol%C3%A1%2C%20Paula!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20um%20servi%C3%A7o."
                   target="_blank"
                   rel="noopener noreferrer"
+                  referrerpolicy="strict-origin-when-cross-origin"
                 >
                   Entrar em contato
                 </a>
@@ -475,6 +538,7 @@
               href="https://wa.me/5585986994455?text=Ol%C3%A1%2C%20Paula!%20Gostaria%20de%20agendar%20um%20atendimento."
               target="_blank"
               rel="noopener noreferrer"
+              referrerpolicy="strict-origin-when-cross-origin"
             >
               <img
                 class="button-icon"

@@ -1,0 +1,4 @@
+Contact: mailto:enfpaulafeitosa@gmail.com
+Preferred-Languages: pt-BR
+Policy: https://github.com/enfpaulafeitosa/portfolio/security/policy
+Canonical: https://www.paulafeitosa.com.br/.well-known/security.txt

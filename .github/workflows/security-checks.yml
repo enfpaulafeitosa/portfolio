@@ -1,0 +1,76 @@
+name: Security checks
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  schedule:
+    - cron: "17 8 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  static-security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check JavaScript syntax
+        run: node --check script.js
+
+      - name: Validate static security rules
+        run: |
+          node <<'NODE'
+          const fs = require("fs");
+          const html = fs.readFileSync("index.html", "utf8");
+          const js = fs.readFileSync("script.js", "utf8");
+
+          const failures = [];
+
+          if (!html.includes("Content-Security-Policy")) {
+            failures.push("Missing Content-Security-Policy meta tag.");
+          }
+
+          if (!html.includes('name="referrer" content="strict-origin-when-cross-origin"')) {
+            failures.push("Missing strict referrer policy.");
+          }
+
+          const targetBlankLinks = [...html.matchAll(/<a\b[^>]*target="_blank"[^>]*>/g)];
+          for (const match of targetBlankLinks) {
+            const tag = match[0];
+            if (!/rel="[^"]*\bnoopener\b[^"]*\bnoreferrer\b[^"]*"/.test(tag)) {
+              failures.push(`target=_blank link missing noopener noreferrer: ${tag}`);
+            }
+            if (!/referrerpolicy="strict-origin-when-cross-origin"/.test(tag)) {
+              failures.push(`target=_blank link missing referrerpolicy: ${tag}`);
+            }
+          }
+
+          if (/\son[a-z]+\s*=/.test(html)) {
+            failures.push("Inline event handlers are not allowed in HTML.");
+          }
+
+          if (/innerHTML\s*=/.test(js)) {
+            failures.push("Avoid innerHTML assignments in JavaScript.");
+          }
+
+          const localSrcs = [...html.matchAll(/\b(?:src|href)="([^"]+)"/g)]
+            .map(([, value]) => value)
+            .filter((value) => !/^(https?:|mailto:|tel:|#)/.test(value));
+
+          for (const path of localSrcs) {
+            if (!fs.existsSync(path)) {
+              failures.push(`Missing local asset: ${path}`);
+            }
+          }
+
+          if (failures.length) {
+            console.error(failures.join("\n"));
+            process.exit(1);
+          }
+
+          console.log("Static security checks passed.");
+          NODE

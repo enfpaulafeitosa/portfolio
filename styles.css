@@ -17,14 +17,19 @@
 
 html {
   scroll-behavior: smooth;
+  background: var(--color-ink);
 }
 
 body {
   margin: 0;
   font-family: "Tenor Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--color-ink);
-  background: var(--color-soft);
+  background: var(--color-ink);
   line-height: 1.6;
+}
+
+main {
+  background: var(--color-soft);
 }
 
 a {
@@ -128,6 +133,19 @@ h3 {
 .site-nav a:hover,
 .site-nav a:focus-visible {
   color: var(--color-primary);
+}
+
+.nav-register {
+  display: none;
+  width: fit-content;
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--color-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .menu-toggle {
@@ -673,7 +691,7 @@ h3 {
   grid-template-columns: 1fr auto;
   gap: 24px;
   align-items: center;
-  padding: clamp(42px, 7vw, 68px) 0;
+  padding: clamp(42px, 7vw, 68px) 0 calc(clamp(42px, 7vw, 68px) + env(safe-area-inset-bottom, 0px));
 }
 
 .contact-content .eyebrow,
@@ -800,9 +818,7 @@ h3 {
   }
 
   .header-register {
-    margin-left: auto;
-    padding: 6px 9px;
-    font-size: 0.66rem;
+    display: none;
   }
 
   .menu-toggle {
@@ -837,6 +853,11 @@ h3 {
   .site-nav a:hover,
   .site-nav a:focus-visible {
     background: var(--color-soft);
+  }
+
+  .nav-register {
+    display: inline-flex;
+    margin: 8px 6px 6px;
   }
 
   .section-shell {
