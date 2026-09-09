@@ -346,6 +346,8 @@ textarea {
 }
 
 .empty-state,
+.session-notice,
+.modal-warning,
 .share-note {
   margin: 14px 0 0;
   color: var(--color-muted);
@@ -358,6 +360,14 @@ textarea {
   border-radius: var(--radius);
   text-align: center;
   background: rgba(255, 245, 245, 0.72);
+}
+
+.session-notice {
+  padding: 12px;
+  border: 1px solid rgba(155, 67, 9, 0.22);
+  border-radius: var(--radius);
+  color: #6f390e;
+  background: rgba(184, 86, 11, 0.08);
 }
 
 .image-name-field {
@@ -430,6 +440,14 @@ textarea {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin-top: 12px;
+}
+
+.modal-warning {
+  padding: 12px;
+  border: 1px solid rgba(184, 134, 11, 0.24);
+  border-radius: var(--radius);
+  color: var(--color-primary-dark);
+  background: rgba(184, 134, 11, 0.09);
 }
 
 .modal-actions .button {

@@ -1,5 +1,4 @@
 const WHATSAPP_NUMBER = "5585986994455";
-const STORAGE_KEY = "paula-feitosa-diario-v1";
 const MONOGRAM_PATH = "assets/monograma.svg";
 
 const elements = {
@@ -55,30 +54,6 @@ function makeId() {
   return `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 }
 
-function readSavedState() {
-  try {
-    const saved = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "{}");
-    entries = Array.isArray(saved.entries) ? saved.entries : [];
-    elements.imageName.value = typeof saved.imageName === "string" ? saved.imageName : "";
-  } catch {
-    entries = [];
-  }
-}
-
-function saveState() {
-  try {
-    window.localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({
-        entries,
-        imageName: elements.imageName.value.trim(),
-      })
-    );
-  } catch {
-    return;
-  }
-}
-
 function sortedEntries() {
   return [...entries].sort((a, b) => `${a.date}${a.time}`.localeCompare(`${b.date}${b.time}`));
 }
@@ -104,7 +79,7 @@ function updatePreviewState() {
 function updateEntryCount() {
   const count = entries.length;
   elements.count.textContent =
-    count === 0 ? "Nenhum registro ainda" : `${count} ${count === 1 ? "registro" : "registros"}`;
+    count === 0 ? "Nenhum registro nesta sessão" : `${count} ${count === 1 ? "registro nesta imagem" : "registros nesta imagem"}`;
   elements.empty.hidden = count > 0;
   elements.clear.hidden = count === 0;
 }
@@ -147,7 +122,6 @@ function renderEntries() {
     remove.textContent = "×";
     remove.addEventListener("click", () => {
       entries = entries.filter((itemEntry) => itemEntry.id !== entry.id);
-      saveState();
       updatePreviewState();
       renderEntries();
     });
@@ -525,7 +499,6 @@ elements.add.addEventListener("click", async () => {
   }
 
   entries.push(entry);
-  saveState();
   updatePreviewState();
   renderEntries();
   resetFormAfterEntry();
@@ -540,12 +513,10 @@ elements.clear.addEventListener("click", () => {
   }
 
   entries = [];
-  saveState();
   updatePreviewState();
   renderEntries();
 });
 
-elements.imageName.addEventListener("input", saveState);
 elements.modalClose.addEventListener("click", closeModal);
 elements.modal.addEventListener("click", (event) => {
   if (event.target === elements.modal) {
@@ -562,5 +533,4 @@ elements.share.addEventListener("click", shareImage);
 
 elements.date.value = localDateValue();
 elements.time.value = localTimeValue();
-readSavedState();
 renderEntries();

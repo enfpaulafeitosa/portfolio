@@ -45,6 +45,7 @@
         <p>
           Registre horários, fraldas e observações do dia. Ao enviar um
           registro, a imagem do diário fica pronta para baixar ou compartilhar.
+          Nada fica salvo depois que a página é fechada ou atualizada.
         </p>
       </header>
 
@@ -132,6 +133,11 @@
           />
         </div>
 
+        <p class="session-notice">
+          Aviso: nada é salvo no site. Ao enviar o registro, compartilhe ou
+          baixe a imagem antes de sair para não perder as informações.
+        </p>
+
         <button type="button" class="button button-primary" id="add-entry">
           Enviar registro
         </button>
@@ -140,8 +146,8 @@
       <section class="diary-panel" aria-labelledby="entries-title">
         <div class="panel-heading">
           <div>
-            <h2 id="entries-title">Registros salvos</h2>
-            <p id="entry-count">Nenhum registro ainda</p>
+            <h2 id="entries-title">Registros desta imagem</h2>
+            <p id="entry-count">Nenhum registro nesta sessão</p>
           </div>
           <button type="button" class="clear-button" id="clear-entries" hidden>
             Limpar
@@ -150,8 +156,8 @@
 
         <ol class="entry-list" id="entry-list"></ol>
         <p class="empty-state" id="empty-state">
-          Comece pelo formulário acima. Os registros ficam salvos neste aparelho
-          enquanto você monta o diário.
+          Comece pelo formulário acima. Este diário não tem login e não salva
+          os dados: compartilhe ou baixe a imagem antes de sair da página.
         </p>
       </section>
 
@@ -172,6 +178,10 @@
         </button>
         <h2 id="modal-title">Imagem pronta</h2>
         <img id="modal-image" alt="Prévia da imagem gerada com o diário de acompanhamento" />
+        <p class="modal-warning">
+          Este diário não fica salvo no site. Compartilhe ou baixe agora para
+          não perder o registro.
+        </p>
         <div class="modal-actions">
           <button type="button" class="button button-primary" id="share-image">
             Compartilhar
@@ -182,7 +192,8 @@
         </div>
         <p class="share-note">
           No celular, o botão compartilhar abre o menu do aparelho para escolher
-          WhatsApp, arquivos ou outro app disponível.
+          WhatsApp, arquivos ou outro app disponível. Depois de compartilhar ou
+          baixar, o registro está finalizado.
         </p>
       </section>
     </div>
