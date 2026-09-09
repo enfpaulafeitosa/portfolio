@@ -10,10 +10,6 @@ const elements = {
   notes: document.querySelector("#entry-notes"),
   imageName: document.querySelector("#image-name"),
   add: document.querySelector("#add-entry"),
-  list: document.querySelector("#entry-list"),
-  count: document.querySelector("#entry-count"),
-  empty: document.querySelector("#empty-state"),
-  clear: document.querySelector("#clear-entries"),
   modal: document.querySelector("#image-modal"),
   modalClose: document.querySelector("#close-modal"),
   modalImage: document.querySelector("#modal-image"),
@@ -27,6 +23,7 @@ let selectedSide = "";
 let currentBlob = null;
 let currentObjectUrl = "";
 let lastFocusedElement = null;
+let isFinishing = false;
 
 function pad(value) {
   return String(value).padStart(2, "0");
@@ -54,10 +51,6 @@ function makeId() {
   return `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 }
 
-function sortedEntries() {
-  return [...entries].sort((a, b) => `${a.date}${a.time}`.localeCompare(`${b.date}${b.time}`));
-}
-
 function setSelectedSide(side) {
   selectedSide = side;
   document.querySelectorAll(".side-option").forEach((button) => {
@@ -76,61 +69,9 @@ function updatePreviewState() {
   closeModal();
 }
 
-function updateEntryCount() {
-  const count = entries.length;
-  elements.count.textContent =
-    count === 0 ? "Nenhum registro nesta sessão" : `${count} ${count === 1 ? "registro nesta imagem" : "registros nesta imagem"}`;
-  elements.empty.hidden = count > 0;
-  elements.clear.hidden = count === 0;
-}
-
 function buildEntryDescription(entry) {
   const diaper = [entry.pee ? "xixi" : "", entry.poop ? "cocô" : ""].filter(Boolean).join(" e ");
   return `${entry.side}${entry.duration ? ` · ${entry.duration} min` : ""}${diaper ? ` · fralda: ${diaper}` : ""}`;
-}
-
-function renderEntries() {
-  elements.list.replaceChildren();
-
-  sortedEntries().forEach((entry) => {
-    const item = document.createElement("li");
-    item.className = "entry-card";
-
-    const content = document.createElement("div");
-
-    const when = document.createElement("span");
-    when.className = "entry-when";
-    when.textContent = `${formatDate(entry.date)} · ${entry.time}`;
-
-    const main = document.createElement("span");
-    main.className = "entry-main";
-    main.textContent = buildEntryDescription(entry);
-
-    content.append(when, main);
-
-    if (entry.notes) {
-      const notes = document.createElement("span");
-      notes.className = "entry-notes";
-      notes.textContent = entry.notes;
-      content.append(notes);
-    }
-
-    const remove = document.createElement("button");
-    remove.className = "remove-entry";
-    remove.type = "button";
-    remove.setAttribute("aria-label", `Remover registro de ${formatDate(entry.date)} às ${entry.time}`);
-    remove.textContent = "×";
-    remove.addEventListener("click", () => {
-      entries = entries.filter((itemEntry) => itemEntry.id !== entry.id);
-      updatePreviewState();
-      renderEntries();
-    });
-
-    item.append(content, remove);
-    elements.list.append(item);
-  });
-
-  updateEntryCount();
 }
 
 function validateEntry() {
@@ -172,6 +113,17 @@ function resetFormAfterEntry() {
   elements.notes.value = "";
   elements.date.value = localDateValue();
   elements.time.value = localTimeValue();
+}
+
+function finishRecord(delay = 500) {
+  if (isFinishing) {
+    return;
+  }
+
+  isFinishing = true;
+  window.setTimeout(() => {
+    window.location.reload();
+  }, delay);
 }
 
 function wrapText(context, text, maxWidth) {
@@ -391,7 +343,7 @@ async function generateImage(triggerButton) {
     }
 
     const monogram = await loadImage(MONOGRAM_PATH);
-    const items = sortedEntries();
+    const items = [...entries];
     const dates = [...new Set(items.map((entry) => entry.date))];
     const period =
       dates.length > 1
@@ -427,7 +379,7 @@ async function generateImage(triggerButton) {
   }
 }
 
-function downloadImage() {
+function downloadImage({ shouldFinish = true } = {}) {
   if (!currentBlob) {
     return;
   }
@@ -442,6 +394,10 @@ function downloadImage() {
     URL.revokeObjectURL(link.href);
     link.remove();
   }, 1000);
+
+  if (shouldFinish) {
+    finishRecord(900);
+  }
 }
 
 async function shareImage() {
@@ -456,6 +412,7 @@ async function shareImage() {
   if (navigator.canShare && navigator.canShare({ files: [file] })) {
     try {
       await navigator.share({ files: [file], title, text });
+      finishRecord();
       return;
     } catch (error) {
       if (error && error.name === "AbortError") {
@@ -467,6 +424,7 @@ async function shareImage() {
   if (navigator.share) {
     try {
       await navigator.share({ title, text });
+      finishRecord();
       return;
     } catch (error) {
       if (error && error.name === "AbortError") {
@@ -475,8 +433,9 @@ async function shareImage() {
     }
   }
 
-  downloadImage();
+  downloadImage({ shouldFinish: false });
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`${text} Imagem em anexo.`)}`, "_blank", "noopener,noreferrer");
+  finishRecord(1400);
 }
 
 document.querySelectorAll(".side-option").forEach((button) => {
@@ -498,23 +457,10 @@ elements.add.addEventListener("click", async () => {
     return;
   }
 
-  entries.push(entry);
+  entries = [entry];
   updatePreviewState();
-  renderEntries();
   resetFormAfterEntry();
   await generateImage(elements.add);
-});
-
-elements.clear.addEventListener("click", () => {
-  const shouldClear = window.confirm("Deseja apagar todos os registros deste diário?");
-
-  if (!shouldClear) {
-    return;
-  }
-
-  entries = [];
-  updatePreviewState();
-  renderEntries();
 });
 
 elements.modalClose.addEventListener("click", closeModal);
@@ -533,4 +479,3 @@ elements.share.addEventListener("click", shareImage);
 
 elements.date.value = localDateValue();
 elements.time.value = localTimeValue();
-renderEntries();
