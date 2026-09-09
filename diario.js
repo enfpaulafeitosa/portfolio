@@ -170,7 +170,7 @@ function validateEntry() {
   }
 
   if (!selectedSide) {
-    window.alert("Selecione o lado do registro.");
+    window.alert("Selecione o lado da amamentação.");
     return null;
   }
 
