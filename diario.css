@@ -35,6 +35,10 @@ body {
   line-height: 1.55;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 button,
 input,
 textarea {
@@ -360,7 +364,58 @@ textarea {
   margin-top: 16px;
 }
 
-.preview-panel img {
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: calc(14px + env(safe-area-inset-top)) 12px calc(14px + env(safe-area-inset-bottom));
+  background: rgba(23, 17, 13, 0.42);
+}
+
+.modal-backdrop[hidden] {
+  display: none;
+}
+
+.image-modal {
+  position: relative;
+  width: min(520px, 100%);
+  max-height: min(780px, calc(100svh - 28px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
+  padding: 18px;
+  overflow: auto;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  box-shadow: 0 30px 80px rgba(23, 17, 13, 0.26);
+}
+
+.image-modal h2 {
+  margin: 0 48px 14px 0;
+  color: var(--color-primary-dark);
+  font-size: 1.24rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  color: #9b4309;
+  background: rgba(184, 86, 11, 0.1);
+  cursor: pointer;
+}
+
+.image-modal img {
   display: block;
   width: 100%;
   height: auto;
@@ -370,14 +425,14 @@ textarea {
   background: var(--color-soft);
 }
 
-.preview-actions {
+.modal-actions {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin-top: 12px;
 }
 
-.preview-actions .button {
+.modal-actions .button {
   margin-top: 0;
 }
 
@@ -399,7 +454,7 @@ textarea {
 
   .diary-grid-two,
   .duration-row,
-  .preview-actions {
+  .modal-actions {
     grid-template-columns: 1fr;
   }
 

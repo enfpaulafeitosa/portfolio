@@ -15,11 +15,11 @@ const elements = {
   count: document.querySelector("#entry-count"),
   empty: document.querySelector("#empty-state"),
   clear: document.querySelector("#clear-entries"),
-  generate: document.querySelector("#generate-image"),
-  previewPanel: document.querySelector("#preview-panel"),
-  previewImage: document.querySelector("#preview-image"),
+  modal: document.querySelector("#image-modal"),
+  modalClose: document.querySelector("#close-modal"),
+  modalImage: document.querySelector("#modal-image"),
   download: document.querySelector("#download-image"),
-  send: document.querySelector("#send-whatsapp"),
+  share: document.querySelector("#share-image"),
   canvas: document.querySelector("#diary-canvas"),
 };
 
@@ -27,6 +27,7 @@ let entries = [];
 let selectedSide = "";
 let currentBlob = null;
 let currentObjectUrl = "";
+let lastFocusedElement = null;
 
 function pad(value) {
   return String(value).padStart(2, "0");
@@ -96,8 +97,8 @@ function updatePreviewState() {
 
   currentBlob = null;
   currentObjectUrl = "";
-  elements.previewImage.removeAttribute("src");
-  elements.previewPanel.hidden = true;
+  elements.modalImage.removeAttribute("src");
+  closeModal();
 }
 
 function updateEntryCount() {
@@ -106,7 +107,6 @@ function updateEntryCount() {
     count === 0 ? "Nenhum registro ainda" : `${count} ${count === 1 ? "registro" : "registros"}`;
   elements.empty.hidden = count > 0;
   elements.clear.hidden = count === 0;
-  elements.generate.disabled = count === 0;
 }
 
 function buildEntryDescription(entry) {
@@ -143,7 +143,7 @@ function renderEntries() {
     const remove = document.createElement("button");
     remove.className = "remove-entry";
     remove.type = "button";
-    remove.setAttribute("aria-label", `Remover mamada de ${formatDate(entry.date)} às ${entry.time}`);
+    remove.setAttribute("aria-label", `Remover registro de ${formatDate(entry.date)} às ${entry.time}`);
     remove.textContent = "×";
     remove.addEventListener("click", () => {
       entries = entries.filter((itemEntry) => itemEntry.id !== entry.id);
@@ -170,7 +170,7 @@ function validateEntry() {
   }
 
   if (!selectedSide) {
-    window.alert("Selecione o lado da mamada.");
+    window.alert("Selecione o lado do registro.");
     return null;
   }
 
@@ -380,13 +380,35 @@ function canvasToBlob(canvas) {
   });
 }
 
-async function generateImage() {
+function openModal() {
+  lastFocusedElement = document.activeElement;
+  elements.modal.hidden = false;
+  document.body.classList.add("modal-open");
+  elements.share.focus();
+}
+
+function closeModal() {
+  if (elements.modal.hidden) {
+    return;
+  }
+
+  elements.modal.hidden = true;
+  document.body.classList.remove("modal-open");
+
+  if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+    lastFocusedElement.focus();
+  }
+}
+
+async function generateImage(triggerButton) {
   if (!entries.length) {
     return;
   }
 
-  elements.generate.disabled = true;
-  elements.generate.textContent = "Gerando imagem...";
+  if (triggerButton) {
+    triggerButton.disabled = true;
+    triggerButton.textContent = "Gerando imagem...";
+  }
 
   try {
     if (document.fonts) {
@@ -419,14 +441,15 @@ async function generateImage() {
     updatePreviewState();
     currentBlob = blob;
     currentObjectUrl = URL.createObjectURL(blob);
-    elements.previewImage.src = currentObjectUrl;
-    elements.previewPanel.hidden = false;
-    elements.previewPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+    elements.modalImage.src = currentObjectUrl;
+    openModal();
   } catch {
     window.alert("Não foi possível gerar a imagem agora. Tente novamente.");
   } finally {
-    elements.generate.textContent = "Gerar imagem do diário";
-    elements.generate.disabled = entries.length === 0;
+    if (triggerButton) {
+      triggerButton.textContent = "Enviar registro";
+      triggerButton.disabled = false;
+    }
   }
 }
 
@@ -447,17 +470,29 @@ function downloadImage() {
   }, 1000);
 }
 
-async function sendToWhatsapp() {
+async function shareImage() {
   if (!currentBlob) {
     return;
   }
 
   const file = new File([currentBlob], "diario-de-acompanhamento.png", { type: "image/png" });
+  const title = "Diário de Acompanhamento";
   const text = "Olá, Paula! Segue o meu diário de acompanhamento.";
 
   if (navigator.canShare && navigator.canShare({ files: [file] })) {
     try {
-      await navigator.share({ files: [file], text });
+      await navigator.share({ files: [file], title, text });
+      return;
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return;
+      }
+    }
+  }
+
+  if (navigator.share) {
+    try {
+      await navigator.share({ title, text });
       return;
     } catch (error) {
       if (error && error.name === "AbortError") {
@@ -482,7 +517,7 @@ document.querySelectorAll("[data-minutes]").forEach((button) => {
   });
 });
 
-elements.add.addEventListener("click", () => {
+elements.add.addEventListener("click", async () => {
   const entry = validateEntry();
 
   if (!entry) {
@@ -494,6 +529,7 @@ elements.add.addEventListener("click", () => {
   updatePreviewState();
   renderEntries();
   resetFormAfterEntry();
+  await generateImage(elements.add);
 });
 
 elements.clear.addEventListener("click", () => {
@@ -510,9 +546,19 @@ elements.clear.addEventListener("click", () => {
 });
 
 elements.imageName.addEventListener("input", saveState);
-elements.generate.addEventListener("click", generateImage);
+elements.modalClose.addEventListener("click", closeModal);
+elements.modal.addEventListener("click", (event) => {
+  if (event.target === elements.modal) {
+    closeModal();
+  }
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeModal();
+  }
+});
 elements.download.addEventListener("click", downloadImage);
-elements.send.addEventListener("click", sendToWhatsapp);
+elements.share.addEventListener("click", shareImage);
 
 elements.date.value = localDateValue();
 elements.time.value = localTimeValue();

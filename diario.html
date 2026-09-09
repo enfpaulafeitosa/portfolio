@@ -13,13 +13,13 @@
     <title>Diário de Acompanhamento | Enf. Paula Feitosa</title>
     <meta
       name="description"
-      content="Registre as mamadas do bebê, gere uma imagem do diário e envie para a Enf. Paula Feitosa pelo WhatsApp."
+      content="Registre os acompanhamentos do bebê, gere uma imagem do diário e envie para a Enf. Paula Feitosa."
     />
     <meta name="robots" content="noindex, follow" />
     <meta property="og:title" content="Diário de Acompanhamento | Enf. Paula Feitosa" />
     <meta
       property="og:description"
-      content="Ferramenta para registrar mamadas, fraldas e observações do bebê e enviar o diário pelo WhatsApp."
+      content="Ferramenta para registrar horários, fraldas e observações do bebê e compartilhar o diário."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
@@ -43,13 +43,13 @@
         <p class="diary-kicker">Enf. Paula Feitosa</p>
         <h1>Diário de Acompanhamento</h1>
         <p>
-          Registre as mamadas, fraldas e observações do dia. No final, gere a
-          imagem do diário para enviar pelo WhatsApp.
+          Registre horários, fraldas e observações do dia. Ao enviar um
+          registro, a imagem do diário fica pronta para baixar ou compartilhar.
         </p>
       </header>
 
       <section class="diary-panel diary-form-panel" aria-labelledby="new-entry-title">
-        <h2 id="new-entry-title">Nova mamada</h2>
+        <h2 id="new-entry-title">Novo registro</h2>
 
         <div class="diary-grid diary-grid-two">
           <div class="field">
@@ -63,8 +63,8 @@
         </div>
 
         <fieldset class="field fieldset">
-          <legend>Lado da mamada</legend>
-          <div class="segmented-control" role="group" aria-label="Lado da mamada">
+          <legend>Lado do registro</legend>
+          <div class="segmented-control" role="group" aria-label="Lado do registro">
             <button type="button" class="side-option" data-side="Direito" aria-pressed="false">
               Direito
             </button>
@@ -121,15 +121,26 @@
           ></textarea>
         </div>
 
+        <div class="field image-name-field">
+          <label for="image-name">Nome que aparece na imagem</label>
+          <input
+            type="text"
+            id="image-name"
+            maxlength="42"
+            placeholder="Ex.: Maria e bebê Sofia"
+            autocomplete="name"
+          />
+        </div>
+
         <button type="button" class="button button-primary" id="add-entry">
-          Adicionar ao diário
+          Enviar registro
         </button>
       </section>
 
       <section class="diary-panel" aria-labelledby="entries-title">
         <div class="panel-heading">
           <div>
-            <h2 id="entries-title">Mamadas registradas</h2>
+            <h2 id="entries-title">Registros salvos</h2>
             <p id="entry-count">Nenhum registro ainda</p>
           </div>
           <button type="button" class="clear-button" id="clear-entries" hidden>
@@ -142,44 +153,39 @@
           Comece pelo formulário acima. Os registros ficam salvos neste aparelho
           enquanto você monta o diário.
         </p>
-
-        <div class="field image-name-field">
-          <label for="image-name">Nome que aparece na imagem</label>
-          <input
-            type="text"
-            id="image-name"
-            maxlength="42"
-            placeholder="Ex.: Maria e bebê Sofia"
-            autocomplete="name"
-          />
-        </div>
-
-        <button type="button" class="button button-primary" id="generate-image" disabled>
-          Gerar imagem do diário
-        </button>
-      </section>
-
-      <section class="diary-panel preview-panel" id="preview-panel" aria-labelledby="preview-title" hidden>
-        <h2 id="preview-title">Imagem pronta</h2>
-        <img id="preview-image" alt="Prévia da imagem gerada com o diário de acompanhamento" />
-        <div class="preview-actions">
-          <button type="button" class="button button-primary" id="send-whatsapp">
-            Enviar no WhatsApp
-          </button>
-          <button type="button" class="button button-secondary" id="download-image">
-            Baixar imagem
-          </button>
-        </div>
-        <p class="share-note">
-          Em alguns celulares, o navegador baixa a imagem primeiro. Depois é só
-          anexar na conversa do WhatsApp.
-        </p>
       </section>
 
       <footer class="diary-footer">
         Enf. Paula Feitosa · COREN-CE 1005356-ENF · paulafeitosa.enf.br
       </footer>
     </main>
+
+    <div class="modal-backdrop" id="image-modal" hidden>
+      <section
+        class="image-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button type="button" class="modal-close" id="close-modal" aria-label="Fechar">
+          ×
+        </button>
+        <h2 id="modal-title">Imagem pronta</h2>
+        <img id="modal-image" alt="Prévia da imagem gerada com o diário de acompanhamento" />
+        <div class="modal-actions">
+          <button type="button" class="button button-primary" id="share-image">
+            Compartilhar
+          </button>
+          <button type="button" class="button button-secondary" id="download-image">
+            Baixar imagem
+          </button>
+        </div>
+        <p class="share-note">
+          No celular, o botão compartilhar abre o menu do aparelho para escolher
+          WhatsApp, arquivos ou outro app disponível.
+        </p>
+      </section>
+    </div>
 
     <canvas id="diary-canvas" hidden></canvas>
   </body>
