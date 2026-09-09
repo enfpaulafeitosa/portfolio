@@ -8,6 +8,20 @@ const servicesDots = document.querySelector("[data-carousel-dots]");
 const scrollTopButton = document.querySelector("[data-scroll-top]");
 
 if (menuToggle && siteNav) {
+  const scrollToSection = (hash) => {
+    const target = document.querySelector(hash);
+
+    if (!target) {
+      return false;
+    }
+
+    const headerHeight = document.querySelector(".site-header")?.offsetHeight || 0;
+    const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    history.pushState(null, "", hash);
+    return true;
+  };
+
   menuToggle.addEventListener("click", () => {
     const isOpen = siteNav.classList.toggle("is-open");
     menuToggle.setAttribute("aria-expanded", String(isOpen));
@@ -16,9 +30,15 @@ if (menuToggle && siteNav) {
 
   siteNav.addEventListener("click", (event) => {
     if (event.target instanceof HTMLAnchorElement) {
+      const hash = event.target.getAttribute("href");
+
       siteNav.classList.remove("is-open");
       menuToggle.setAttribute("aria-expanded", "false");
       menuToggle.setAttribute("aria-label", "Abrir menu");
+
+      if (hash && hash.startsWith("#") && scrollToSection(hash)) {
+        event.preventDefault();
+      }
     }
   });
 }

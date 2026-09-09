@@ -199,6 +199,10 @@ h3 {
   margin: 0 auto;
 }
 
+section[id] {
+  scroll-margin-top: 88px;
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.72fr);
@@ -681,6 +685,101 @@ h3 {
   color: var(--color-ink);
 }
 
+.diary-tool-section {
+  background:
+    linear-gradient(180deg, rgba(255, 250, 250, 0.96), rgba(255, 245, 245, 0.98)),
+    var(--color-soft);
+  border-top: 1px solid var(--color-line);
+}
+
+.diary-tool-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.58fr);
+  gap: clamp(24px, 5vw, 64px);
+  align-items: center;
+  padding: clamp(48px, 8vw, 86px) 0;
+}
+
+.diary-tool-copy h2 {
+  max-width: 12ch;
+  margin-bottom: 18px;
+  font-size: clamp(1.8rem, 3.4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.diary-tool-copy p {
+  max-width: 58ch;
+  margin-bottom: 14px;
+  color: var(--color-muted);
+  font-size: 1.03rem;
+}
+
+.diary-tool-button {
+  margin-top: 10px;
+}
+
+.diary-tool-preview {
+  display: flex;
+  justify-content: center;
+}
+
+.diary-phone-frame {
+  width: min(100%, 330px);
+  padding: 18px;
+  border: 1px solid rgba(184, 134, 11, 0.25);
+  border-radius: var(--radius);
+  background: #ffffff;
+  box-shadow: var(--shadow);
+}
+
+.diary-mini-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 16px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-primary-dark);
+}
+
+.diary-mini-header span {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(184, 134, 11, 0.13);
+}
+
+.diary-mini-header strong,
+.diary-mini-row strong {
+  font-weight: 400;
+}
+
+.diary-mini-row {
+  display: grid;
+  grid-template-columns: 0.82fr 1fr;
+  gap: 12px;
+  align-items: center;
+  min-height: 48px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(234, 223, 223, 0.78);
+}
+
+.diary-mini-row span {
+  color: var(--color-muted);
+  font-size: 0.88rem;
+}
+
+.diary-mini-note {
+  margin-top: 16px;
+  padding: 13px;
+  border-radius: var(--radius);
+  color: var(--color-primary-dark);
+  background: rgba(184, 134, 11, 0.1);
+  font-size: 0.94rem;
+  text-align: center;
+}
+
 .contact-section {
   color: var(--color-soft);
   background: var(--color-ink);
@@ -784,6 +883,7 @@ h3 {
   .hero,
   .intro-grid,
   .mission-section,
+  .diary-tool-content,
   .contact-content {
     grid-template-columns: 1fr;
   }
@@ -803,6 +903,10 @@ h3 {
 
   .contact-content .button {
     justify-self: start;
+  }
+
+  .diary-tool-preview {
+    justify-content: flex-start;
   }
 }
 
@@ -872,6 +976,15 @@ h3 {
   .hero-actions .button {
     width: 100%;
     min-height: 52px;
+  }
+
+  .diary-tool-button {
+    width: 100%;
+    min-height: 52px;
+  }
+
+  .diary-phone-frame {
+    width: 100%;
   }
 
   .intro-actions {
