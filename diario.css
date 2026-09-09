@@ -1,0 +1,438 @@
+:root {
+  --color-ink: #17110d;
+  --color-muted: #65564c;
+  --color-soft: #fff5f5;
+  --color-blush: #fbeded;
+  --color-surface: #fffafa;
+  --color-primary: #b8860b;
+  --color-primary-dark: #745204;
+  --color-line: #eadfdf;
+  --shadow: 0 18px 42px rgba(116, 82, 4, 0.11);
+  --radius: 8px;
+  --tap: 48px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: var(--color-soft);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100svh;
+  margin: 0;
+  color: var(--color-ink);
+  background:
+    radial-gradient(circle at top left, rgba(184, 134, 11, 0.11), transparent 28rem),
+    linear-gradient(165deg, var(--color-soft) 0%, var(--color-blush) 100%);
+  font-family: "Tenor Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.diary-shell {
+  width: min(720px, calc(100% - 28px));
+  margin: 0 auto;
+  padding: calc(20px + env(safe-area-inset-top)) 0 calc(44px + env(safe-area-inset-bottom));
+}
+
+.diary-header {
+  padding: 10px 0 18px;
+  text-align: center;
+}
+
+.diary-mark {
+  display: block;
+  width: 52px;
+  height: auto;
+  margin: 0 auto 10px;
+}
+
+.diary-kicker {
+  margin: 0 0 4px;
+  color: var(--color-primary-dark);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.diary-header h1 {
+  max-width: 13ch;
+  margin: 0 auto 10px;
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.diary-header p {
+  max-width: 44ch;
+  margin: 0 auto;
+  color: var(--color-muted);
+  font-size: clamp(0.95rem, 3.7vw, 1.04rem);
+}
+
+.diary-panel {
+  margin-top: 14px;
+  padding: clamp(16px, 4vw, 24px);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background: rgba(255, 250, 250, 0.94);
+  box-shadow: var(--shadow);
+}
+
+.diary-panel h2 {
+  margin: 0 0 16px;
+  color: var(--color-primary-dark);
+  font-size: clamp(1.16rem, 4.8vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.diary-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.diary-grid-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.field {
+  margin-top: 14px;
+}
+
+.field:first-child,
+.diary-grid + .field,
+.diary-grid .field {
+  margin-top: 0;
+}
+
+label,
+legend {
+  display: block;
+  margin: 0 0 7px;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+}
+
+.fieldset {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="number"],
+input[type="text"],
+textarea {
+  width: 100%;
+  min-height: var(--tap);
+  padding: 12px 13px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  color: var(--color-ink);
+  background: var(--color-soft);
+}
+
+textarea {
+  min-height: 86px;
+  resize: vertical;
+}
+
+.segmented-control {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.side-option,
+.quick-minutes button,
+.clear-button {
+  min-height: var(--tap);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  color: var(--color-muted);
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.side-option {
+  padding: 10px 8px;
+}
+
+.side-option[aria-pressed="true"] {
+  color: #ffffff;
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+}
+
+.duration-row {
+  display: grid;
+  grid-template-columns: minmax(92px, 0.42fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+.quick-minutes {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.quick-minutes button {
+  padding: 0;
+  color: var(--color-primary-dark);
+}
+
+.checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checks label {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  color: var(--color-ink);
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.checks input {
+  width: 20px;
+  height: 20px;
+  margin: 0 8px 0 0;
+  accent-color: var(--color-primary);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 52px;
+  margin-top: 16px;
+  padding: 13px 16px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  color: var(--color-ink);
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.button-primary {
+  color: #ffffff;
+  background: var(--color-primary);
+}
+
+.button-primary:hover,
+.button-primary:focus-visible {
+  background: var(--color-primary-dark);
+}
+
+.button-secondary {
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary);
+  background: #ffffff;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.panel-heading h2 {
+  margin-bottom: 2px;
+}
+
+.panel-heading p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+}
+
+.clear-button {
+  width: auto;
+  min-height: 40px;
+  padding: 8px 12px;
+  color: var(--color-primary-dark);
+}
+
+.entry-list {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.entry-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  padding: 13px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background: #ffffff;
+}
+
+.entry-when {
+  display: block;
+  color: var(--color-primary-dark);
+  font-size: 0.9rem;
+  line-height: 1.25;
+}
+
+.entry-main {
+  display: block;
+  margin-top: 3px;
+  color: var(--color-ink);
+}
+
+.entry-notes {
+  display: block;
+  margin-top: 3px;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  overflow-wrap: anywhere;
+}
+
+.remove-entry {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  color: #9b4309;
+  background: rgba(184, 86, 11, 0.1);
+  cursor: pointer;
+}
+
+.empty-state,
+.share-note {
+  margin: 14px 0 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.empty-state {
+  padding: 14px;
+  border: 1px dashed var(--color-line);
+  border-radius: var(--radius);
+  text-align: center;
+  background: rgba(255, 245, 245, 0.72);
+}
+
+.image-name-field {
+  margin-top: 16px;
+}
+
+.preview-panel img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 4px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background: var(--color-soft);
+}
+
+.preview-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.preview-actions .button {
+  margin-top: 0;
+}
+
+.share-note {
+  text-align: center;
+}
+
+.diary-footer {
+  margin-top: 24px;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .diary-shell {
+    width: min(100% - 20px, 720px);
+  }
+
+  .diary-grid-two,
+  .duration-row,
+  .preview-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-minutes {
+    grid-template-columns: repeat(5, minmax(42px, 1fr));
+  }
+
+  .entry-card {
+    grid-template-columns: minmax(0, 1fr) 40px;
+  }
+}
+
+@media (max-width: 360px) {
+  .diary-shell {
+    width: min(100% - 16px, 720px);
+  }
+
+  .diary-panel {
+    padding: 14px;
+  }
+
+  .segmented-control {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-minutes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 760px) {
+  .diary-shell {
+    padding-top: 34px;
+    padding-bottom: 64px;
+  }
+}
